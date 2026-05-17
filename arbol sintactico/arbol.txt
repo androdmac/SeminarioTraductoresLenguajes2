@@ -1,0 +1,42 @@
+ARBOL SINTACTICO GENERADO:
+==========================
+|-- Programa
+  |-- Declaracion
+    |-- Tipo: int
+    |-- ID: a
+  |-- DefinicionFuncion: suma
+    |-- TipoRetorno: int
+    |-- Parametros
+      |-- Declaracion
+        |-- Tipo: int
+        |-- ID: a
+      |-- Declaracion
+        |-- Tipo: int
+        |-- ID: b
+    |-- Cuerpo
+      |-- Return
+        |-- Operacion: +
+          |-- ID: a
+          |-- ID: b
+  |-- DefinicionFuncion: main
+    |-- TipoRetorno: int
+    |-- Cuerpo
+      |-- Declaracion
+        |-- Tipo: float
+        |-- ID: a
+      |-- Declaracion
+        |-- Tipo: int
+        |-- ID: b
+      |-- Declaracion
+        |-- Tipo: int
+        |-- ID: c
+      |-- Asignacion: =
+        |-- ID: c
+        |-- Operacion: +
+          |-- ID: a
+          |-- ID: b
+      |-- Asignacion: =
+        |-- ID: c
+        |-- LlamadaFuncion: suma
+          |-- Literal: 8
+          |-- Literal: 9

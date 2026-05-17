@@ -1,0 +1,60 @@
+digraph AST {
+    node [fontname="Arial", shape=box, style=filled, fillcolor="#f9f9f9"];
+    edge [color="#333333"];
+
+    // Nodo Raíz
+    Raiz [label="Programa", fillcolor="#d1e7dd"];
+
+    // Rama Global
+    Global [label="Declaración Global: int a"];
+    Raiz -> Global;
+
+    // Rama Función Suma
+    subgraph cluster_suma {
+        label = "Función: suma";
+        color = blue;
+        
+        Suma [label="Definición: suma", fillcolor="#cfe2ff"];
+        Params [label="Parámetros: int a, int b"];
+        Return [label="Sentencia: Return"];
+        OpSuma [label="Operación: +"];
+        IdentA [label="ID: a"];
+        IdentB [label="ID: b"];
+
+        Suma -> Params;
+        Suma -> Return;
+        Return -> OpSuma;
+        OpSuma -> IdentA;
+        OpSuma -> IdentB;
+    }
+    Raiz -> Suma;
+
+    // Rama Función Main
+    subgraph cluster_main {
+        label = "Función: main";
+        color = green;
+
+        Main [label="Definición: main", fillcolor="#e2e3e5"];
+        Decls [label="Declaraciones: float a, int b, int c"];
+        Asig1 [label="Asignación (=)"];
+        SumaM [label="Suma (+)"];
+        
+        Asig2 [label="Asignación (=)"];
+        Call [label="Llamada: suma()"];
+        Args [label="Args: 8, 9"];
+
+        Main -> Decls;
+        Main -> Asig1;
+        Main -> Asig2;
+        
+        Asig1 -> "ID: c";
+        Asig1 -> SumaM;
+        SumaM -> "ID: a";
+        SumaM -> "ID: b";
+        
+        Asig2 -> "ID: c ";
+        Asig2 -> Call;
+        Call -> Args;
+    }
+    Raiz -> Main;
+}
